@@ -1,0 +1,706 @@
+@import url("https://v1.fontapi.ir/css/SFProDisplay");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-family: SF Pro Display, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 0) 10%, blue 100%, blue 100%);
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+
+  & #bombBackground {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999;
+    background-color: #ff0000;
+    display: none;
+  }
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+
+  & #homepage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    & .logoBlum {
+      color: white;
+      font-size: 75px;
+      transform: translateY(100px);
+      animation: blumLogo 2s ease-in-out forwards;
+      font-weight: 800;
+      position: absolute;
+    }
+
+    & .controlButtons {
+      width: auto;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.212);
+      padding: 20px;
+      border-radius: 20px;
+      gap: 20px;
+      transition: .4s;
+      transform: translateY(-100px);
+      animation: controlButtons 2s ease-in-out forwards;
+
+      &:hover button {
+        filter: blur(3px);
+
+        &:hover {
+          border-color: white;
+          filter: blur(0px);
+        }
+      }
+
+      & button {
+        width: 230px;
+        height: 50px;
+        /* background: linear-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(19, 19, 19) 100%, rgb(19, 19, 19) 100%); */
+        color: white;
+        background-color: rgba(36, 36, 36, 0.055);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.212);
+        border-radius: 20px;
+        font-size: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: rgb(255, 255, 255);
+          color: rgb(0, 0, 0);
+          transform: scale(1.05);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+          filter: blur(3px);
+
+          &:hover {
+            border-color: white;
+            filter: blur(0px);
+          }
+        }
+
+        &:active {
+          transform: scale(0.95);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+          background-color: rgb(0, 0, 0);
+          color: white;
+          filter: blur(100px);
+        }
+
+      }
+    }
+  }
+
+  & #gamepage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    z-index: 9999999999999999;
+
+    & header {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: #000000;
+      padding: 15px;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.199);
+      z-index: 99999999999999999;
+
+      & #leftGamepage {
+        width: 40px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 9999999999999999;
+      }
+
+      & h1 {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgb(255, 255, 255);
+      }
+
+      & h2 {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    & #gameArea {
+      width: 100%;
+      height: 100%;
+      --color: rgba(48, 48, 48, 0.3);
+      background-color: #000000;
+      background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
+      background-size: 55px 55px;
+
+
+      & #timerStart {
+        position: absolute;
+        left: 45%;
+        top: 35%;
+        color: #ffffff;
+        z-index: 99999999999999999999999999999999999999999999999999999999999999999999;
+        font-size: 75px;
+      }
+    }
+
+
+  }
+
+  & #shoppage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    z-index: 9999999999999999;
+    display: none;
+
+    & header {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: #000000;
+      padding: 15px;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.199);
+      z-index: 99999999999999999;
+
+      & h2 {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgb(255, 255, 255);
+      }
+
+      & #leftShoppage {
+        width: 40px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 9999999999999999;
+      }
+    }
+
+    & div {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transform: translateY(50px);
+
+      & h1 {
+        font-size: 40px;
+        font-weight: 500;
+        transform: translateY(-20px);
+        color: rgb(255, 255, 255);
+      }
+
+      & .shopItems {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items: center;
+
+        & .shopItem {
+          width: 30%;
+          height: 200px;
+          background-color: rgb(19, 19, 19);
+          border-radius: 30px;
+          color: white;
+
+          & h2 {}
+
+          & p {}
+
+          & button {}
+        }
+      }
+    }
+  }
+
+  & #howpage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    z-index: 9999999999999999;
+    display: none;
+
+    & header {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: #000000;
+      padding: 15px;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.199);
+      z-index: 99999999999999999;
+
+      & h2 {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgb(255, 255, 255);
+      }
+
+      & #leftHowpage {
+        width: 40px;
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 9999999999999999;
+      }
+    }
+
+    & div {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transform: translateY(50px);
+
+      & h1 {
+        font-size: 40px;
+        font-weight: 500;
+        transform: translateY(-20px);
+        color: rgb(255, 255, 255);
+      }
+
+
+
+      & p {
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        font-weight: 200;
+        text-align: left;
+        width: 90%;
+      }
+    }
+
+
+  }
+
+  & #settingspage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-color: black;
+    z-index: 9999999999999999;
+    display: none;
+
+    & #leftSettingspage {
+      width: 40px;
+      height: 40px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      border: none;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 9999999999999999;
+    }
+  }
+}
+
+.ball {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+  background-image: url(https://static.vecteezy.com/system/resources/thumbnails/022/050/075/small_2x/3d-coin-gold-bronze-silver-icon-png.png);
+  background-position: center;
+  background-size: cover;
+  animation: fall linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .4s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    background: transparent;
+    border-radius: 50%;
+    animation: fall linear;
+  }
+}
+
+.bomb {
+  position: absolute;
+  background: #ff0000;
+  border-radius: 50%;
+  animation: fall linear;
+  background-image: url(https://static.vecteezy.com/system/resources/thumbnails/010/833/928/small_2x/dynamite-bomb-game-asset-2d-icon-transparent-background-png.png);
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.952);
+  align-items: center;
+  cursor: pointer;
+  transition: .4s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    background: transparent;
+    border-radius: 50%;
+    animation: fall linear;
+  }
+}
+
+.ballUltra {
+  position: absolute;
+  /* background: #f2ff41; */
+  background-image: url(https://d3kmbcz7ohcv6b.cloudfront.net/static/wp-content/uploads/2022/10/game-coin-a-good-investment.png);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  animation: fall linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 50px rgba(255, 217, 0, 0.486);
+  cursor: pointer;
+  transition: .4s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    background: transparent;
+    border-radius: 50%;
+  }
+}
+
+
+
+
+
+@keyframes fall {
+  0% {
+    top: -20px;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    top: 100vh;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blumLogo {
+  0% {
+    transform: translateY(300px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  100% {
+    transform: translateY(-300px);
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+}
+
+@keyframes controlButtons {
+  0% {
+    /* opacity: 0; */
+    filter: blur(100px);
+  }
+
+  80% {
+    /* opacity: 0; */
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(-70px);
+  }
+
+}
+
+@keyframes backgroundFadeOut {
+  0% {
+    filter: blur(0);
+    opacity: 1;
+    display: flex;
+  }
+
+  100% {
+    filter: blur(1000px);
+    opacity: 0.5;
+    display: none;
+  }
+}
+
+@keyframes backgroundFadeIn {
+  0% {
+    filter: blur(1000px);
+    opacity: 0.5;
+  }
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    display: flex;
+  }
+}
+
+@keyframes loading {
+  0% {
+    display: none;
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  5% {
+    opacity: 1;
+    filter: blur(0px);
+    display: flex;
+  }
+
+  95% {
+    opacity: 1;
+    filter: blur(0px);
+    display: flex;
+  }
+
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+    display: none;
+  }
+
+}
+
+@keyframes bombLight {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.5;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0.5;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////// */
+
+.spinner {
+  position: absolute;
+  width: 9px;
+  display: none;
+  height: 9px;
+}
+
+.spinner div {
+  position: absolute;
+  width: 50%;
+  height: 150%;
+  background: #ffffff;
+  transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+  animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+.spinner div:nth-child(1) {
+  --delay: 0.1;
+  --rotation: 36;
+  --translation: 150;
+}
+
+.spinner div:nth-child(2) {
+  --delay: 0.2;
+  --rotation: 72;
+  --translation: 150;
+}
+
+.spinner div:nth-child(3) {
+  --delay: 0.3;
+  --rotation: 108;
+  --translation: 150;
+}
+
+.spinner div:nth-child(4) {
+  --delay: 0.4;
+  --rotation: 144;
+  --translation: 150;
+}
+
+.spinner div:nth-child(5) {
+  --delay: 0.5;
+  --rotation: 180;
+  --translation: 150;
+}
+
+.spinner div:nth-child(6) {
+  --delay: 0.6;
+  --rotation: 216;
+  --translation: 150;
+}
+
+.spinner div:nth-child(7) {
+  --delay: 0.7;
+  --rotation: 252;
+  --translation: 150;
+}
+
+.spinner div:nth-child(8) {
+  --delay: 0.8;
+  --rotation: 288;
+  --translation: 150;
+}
+
+.spinner div:nth-child(9) {
+  --delay: 0.9;
+  --rotation: 324;
+  --translation: 150;
+}
+
+.spinner div:nth-child(10) {
+  --delay: 1;
+  --rotation: 360;
+  --translation: 150;
+}
+
+@keyframes spinner-fzua35 {
+
+  0%,
+  10%,
+  20%,
+  30%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90%,
+  100% {
+    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+  }
+
+  50% {
+    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));
+  }
+}
