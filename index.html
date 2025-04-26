@@ -1,103 +1,142 @@
-<!doctype html>
-<html lang=en>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset=UTF-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Blum | Homepage</title>
-<link rel=stylesheet href=./style.css>
-<link rel=icon href="./Frame 1.png" type=image/png>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin=anonymous referrerpolicy=no-referrer>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blum | Homepage</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./Frame 1.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-<div id=bombBackground></div>
-<main>
-<div class=spinner>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-</div>
-<section id=homepage>
-<h1 class=logoBlum>Blix</h1>
-<div class=controlButtons>
-<button id=startButton>Start</button>
-<button id=shopButton>Shop</button>
-<button id=howButton>How to play?</button>
-<button id=settingsButton>Settings</button>
-</div>
-</section>
-<section id=gamepage>
-<header>
-<button id=leftGamepage><i class="fa-solid fa-angle-left"></i></button>
-<h1>Blix</h1>
-<h2 id=score>Score:</h2>
-</header>
-<div id=gameArea>
-<h1 id=timerStart></h1>
-</div>
-</section>
-<section id=shoppage>
-<header>
-<button id=leftShoppage><i class="fa-solid fa-angle-left"></i></button>
-<h2>Blix</h2>
-</header>
-<div>
-<h1>Shop</h1>
-<div class=shopItems>
-<div class=shopItem>
-<h2>Extra Time</h2>
-<p>Price: 100 points</p>
-<button id=buyExtraTime>Buy</button>
-</div>
-<div class=shopItem>
-<h2>Double Points</h2>
-<p>Price: 200 points</p>
-<button id=buyDoublePoints>Buy</button>
-</div>
-<div class=shopItem>
-<h2>Speed Boost</h2>
-<p>Price: 300 points</p>
-<button id=buySpeedBoost>Buy</button>
-</div>
-</div>
-</div>
-</section>
-<section id=howpage>
-<header>
-<button id=leftHowpage><i class="fa-solid fa-angle-left"></i></button>
-<h2>Blix</h2>
-</header>
-<div>
-<h1>How To Play?</h1>
-<p>
-Blix is a fast-paced and attention-based game where the player must score as many points as possible within a short amount of time by tapping on images that fall from the top of the screen.
-<br><br>
-The timer starts immediately when the game begins. Players must quickly react and tap on falling images to earn points before the time runs out.
-<br><br>
-Bombs occasionally fall alongside other images. If the player taps on a bomb, they will lose 10 points, and the screen will flash red as a warning. This adds an extra layer of challenge.
-<br><br>
-The game ends automatically when the countdown reaches zero. The final score depends on how many points the player has collected during that time.
-<br><br>
-As the player earns points, those can be used in the in-game shop to purchase upgrades, such as extra time. This allows for higher scores and longer gameplay sessions.
-<br><br>
-In the settings section, players can customize the game’s appearance, including the overall visual style and the design of the falling characters. These adjustments help create a more personalized gaming experience.
-</p>
-</div>
-</section>
-<section id=settingspage>
-<header>
-<button id=leftSettingspage><i class="fa-solid fa-angle-left"></i></button>
-<h2>Blix</h2>
-<h1>Settings</h1>
-</header>
-</section>
-</main>
-<script src=./script.js></script>
+    <div id="bombBackground"></div>
+
+    <main>
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+
+        <section id="homepage">
+            <h1 class="logoBlum">Blix</h1>
+
+            <div class="controlButtons">
+                <button id="startButton">Start</button>
+                <button id="shopButton">Shop</button>
+                <button id="howButton">How to play?</button>
+                <button id="settingsButton">Settings</button>
+            </div>
+        </section>
+
+        <section id="gamepage">
+            <header>
+                <button id="leftGamepage"><i class="fa-solid fa-angle-left"></i></button>
+                <h1>Blix</h1>
+                <h2 id="score">Points:</h2>
+            </header>
+
+            <div id="gameArea">
+                <h1 id="timerStart"></h1>
+            </div>
+
+        </section>
+
+        <section id="shoppage">
+            <header>
+                <button id="leftShoppage"><i class="fa-solid fa-angle-left"></i></button>
+                <h2>Blix</h2>
+            </header>
+
+            <div>
+                <h1>Shop</h1>
+
+                <div class="shopItems">
+                    <div class="shopItem">
+                        <h2>Extra <br>Time</h2>
+                        <p>100 points</p>
+                        <button id="buyExtraTime">Buy</button>
+                    </div>
+
+                    <div class="shopItem">
+                        <h2>Double <br>Points</h2>
+                        <p>200 points</p>
+                        <button id="buyDoublePoints">Buy</button>
+                    </div>
+
+                    <div class="shopItem">
+                        <h2>Speed <br>Boost</h2>
+                        <p>300 points</p>
+                        <button id="buySpeedBoost">Buy</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="howpage">
+            <header>
+                <button id="leftHowpage"><i class="fa-solid fa-angle-left"></i></button>
+                <h2>Blix</h2>
+            </header>
+
+            <div>
+                <h1>How To Play?</h1>
+
+                <p>
+                    Blix is a fast-paced and attention-based game where the player must score as many points as possible
+                    within a short amount of time by tapping on images that fall from the top of the screen.
+                    <br><br>
+                    The timer starts immediately when the game begins. Players must quickly react and tap on falling
+                    images
+                    to earn points before the time runs out.
+                    <br><br>
+                    Bombs occasionally fall alongside other images. If the player taps on a bomb, they will lose 10
+                    points,
+                    and the screen will flash red as a warning. This adds an extra layer of challenge.
+                    <br><br>
+                    The game ends automatically when the countdown reaches zero. The final score depends on how many
+                    points
+                    the player has collected during that time.
+                    <br><br>
+                    As the player earns points, those can be used in the in-game shop to purchase upgrades, such as
+                    extra
+                    time. This allows for higher scores and longer gameplay sessions.
+                    <br><br>
+                    In the settings section, players can customize the game’s appearance, including the overall visual
+                    style
+                    and the design of the falling characters. These adjustments help create a more personalized gaming
+                    experience.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section id="settingspage">
+            <header>
+                <button id="leftSettingspage"><i class="fa-solid fa-angle-left"></i></button>
+                <h2>Blix</h2>
+                <h1>Settings</h1>
+            </header>
+
+        </section>
+    </main>
+
+    <script src="./script.js"></script>
 </body>
+
 </html>
