@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blum | Homepage</title>
+    <title>Blix | Homepage</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./Frame 1.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -13,9 +13,10 @@
 </head>
 
 <body>
-    <div id="bombBackground"></div>
 
     <main>
+        <audio src="./Soft.mp3" controls id="gamesound"></audio>
+        <div id="bombBackground"></div>
         <div class="spinner">
             <div></div>
             <div></div>
@@ -48,8 +49,16 @@
                 <h2 id="score">Points:</h2>
             </header>
 
+            <div id="timeIsOver">
+                <h1>Time is up</h1>
+                <h2 id="overScore">Your score:</h2>
+                <button id="playAgain">Play Again</button>
+                <button id=""></button>
+            </div>
             <div id="gameArea">
                 <h1 id="timerStart"></h1>
+                <h1 id="timer"></h1>
+
             </div>
 
         </section>
@@ -78,7 +87,7 @@
 
                     <div class="shopItem">
                         <h2>Speed <br>Boost</h2>
-                        <p>300 points</p>
+                        <p>500 points</p>
                         <button id="buySpeedBoost">Buy</button>
                     </div>
                 </div>
