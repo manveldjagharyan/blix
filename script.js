@@ -1,6 +1,6 @@
 window.onload = function () {
 
-
+    var bombBackground = document.getElementById('bombBackground');
 
     //......CANVAS......//
     let homepage = document.getElementById('homepage');
@@ -9,7 +9,7 @@ window.onload = function () {
     let howpage = document.getElementById('howpage');
     let settingspage = document.getElementById('settingspage');
     let spinner = document.querySelector('.spinner');
-    let bombBackground = document.getElementById('bombBackground');
+
     gamepage.style.display = 'none';
     howpage.style.display = 'none';
     settingspage.style.display = 'none';
@@ -26,6 +26,8 @@ window.onload = function () {
     let leftShoppage = document.getElementById('leftShoppage');
     let leftHowpage = document.getElementById('leftHowpage');
     let leftSettingspage = document.getElementById('leftSettingspage');
+    ////
+    let buyExtraTime = document.getElementById('buyExtraTime');
 
 
     //......START......//
@@ -33,18 +35,41 @@ window.onload = function () {
     let ballIntervalId;
     let bombIntervalId;
     let ballUltraIntervalId;
+
     let scoreValue = 0;
     let scoreDisplay = document.getElementById("score");
+    let overScore = document.getElementById("overScore");
 
-    startButton.addEventListener('click', function () {
+    let timeIsOver = document.getElementById("timeIsOver");
+    let playAgain = document.getElementById("playAgain");
+
+    var timer
+    localStorage.setItem('timer', timer);
+
+    function setTimer(newTime) {
+        localStorage.setItem('timer', newTime);
+    }
+    let timerDisplay = document.getElementById('timer')
+    timerDisplay.style.display = 'none'
+
+    startButton.onclick = startGame;
+    playAgain.onclick = startGame;
+
+    function startGame() {
         clearInterval(countdownIntervalId);
         clearInterval(ballIntervalId);
         clearInterval(bombIntervalId);
         clearInterval(ballUltraIntervalId);
         clearGameArea();
 
+        timeIsOver.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        timeIsOver.style.display = 'none';
+
+        timer = 15
         scoreValue = 0;
         scoreDisplay.textContent = `Points: ${scoreValue}`;
+
+        timeIsOver.style.display = 'none';
 
         homepage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
         loading(500);
@@ -72,6 +97,32 @@ window.onload = function () {
                     setTimeout(() => {
                         timeStart.style.display = 'none';
                     }, 1000);
+                    document.getElementById('gamesound').play()
+                    const interval = setInterval(() => {
+                        timerDisplay.style.display = 'flex'
+                        timerDisplay.style.animation = 'backgroundFadeIn .3s ease-in-out forwards';
+                        const minutes = Math.floor(timer / 60);
+                        const seconds = timer % 60;
+
+                        timerDisplay.textContent =
+                            String(minutes).padStart(2, '0') + ':' +
+                            String(seconds).padStart(2, '0');
+
+                        if (timer === 0) {
+                            clearInterval(interval);
+                            document.getElementById('gamesound').pause()
+                            document.getElementById('gamesound').currentTime = 0;
+                            timerDisplay.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+                            timerDisplay.style.display = 'none';
+                            overScore.textContent = `Your score: ${scoreValue}`;
+                            timeIsOver.style.display = 'flex';
+                            timeIsOver.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+                        } else {
+                            timer--;
+                        }
+
+
+                    }, 1000);
 
                     ballIntervalId = setInterval(() => {
                         if (countBall < maxBalls) {
@@ -79,7 +130,7 @@ window.onload = function () {
                         } else {
                             clearInterval(ballIntervalId);
                         }
-                    }, 500);
+                    }, 300);
 
                     bombIntervalId = setInterval(() => {
                         if (countBombs < maxBombs) {
@@ -87,7 +138,7 @@ window.onload = function () {
                         } else {
                             clearInterval(bombIntervalId);
                         }
-                    }, 4000);
+                    }, 3500);
 
                     ballUltraIntervalId = setInterval(() => {
                         if (countBombs < maxBombs) {
@@ -95,11 +146,18 @@ window.onload = function () {
                         } else {
                             clearInterval(ballUltraIntervalId);
                         }
-                    }, 2000);
+                    }, 1500);
                 }
             }, 1000);
         }, 500);
-    });
+    };
+
+
+    buyExtraTime.onclick = function () {
+        timer = parseInt(localStorage.getItem('timer')) || 0;
+        timer += 5;
+        setTimer(timer);
+    }
 
 
     /////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +183,7 @@ window.onload = function () {
         const left = Math.random() * (window.innerWidth - size);
         ball.style.left = `${left}px`;
 
-        const duration = Math.random() * 2 + 5;
+        const duration = Math.random() * 2 + 3;
         ball.style.animationDuration = `${duration}s`;
 
         gameArea.appendChild(ball);
@@ -147,7 +205,7 @@ window.onload = function () {
                 gameArea.removeChild(ball);
             }, 500);
             countBall--;
-            scoreDisplay.textContent = `Points: ${scoreValue}`;
+            scoreDisplay.textContent = "Points: " + formatScore(scoreValue);
         });
     }
 
@@ -161,7 +219,7 @@ window.onload = function () {
         const left = Math.random() * (window.innerWidth - size);
         ballUltra.style.left = `${left}px`;
 
-        const duration = Math.random() * 2 + 5;
+        const duration = Math.random() * 2 + 3;
         ballUltra.style.animationDuration = `${duration}s`;
 
         gameArea.appendChild(ballUltra);
@@ -183,9 +241,10 @@ window.onload = function () {
                 gameArea.removeChild(ballUltra);
             }, 500);
             countBallUltra--;
-            scoreDisplay.textContent = `Points: ${scoreValue}`;
+            scoreDisplay.textContent = "Points: " + formatScore(scoreValue);
         });
     }
+
 
     function createBomb() {
         let bomb = document.createElement("div");
@@ -198,7 +257,7 @@ window.onload = function () {
         const left = Math.random() * (window.innerWidth - size);
         bomb.style.left = `${left}px`;
 
-        const duration = Math.random() * 2 + 5;
+        const duration = Math.random() * 2 + 3;
         bomb.style.animationDuration = `${duration}s`;
 
         gameArea.appendChild(bomb);
@@ -213,25 +272,29 @@ window.onload = function () {
             countBombs = 0;
         }
 
-        bomb.addEventListener("click", function handleBombClick() {
+
+
+        bomb.addEventListener("click", function () {
             if (scoreValue > 0 && scoreValue < 20) {
                 scoreValue -= 5;
-            } 
+            }
             if (scoreValue > 20 && scoreValue < 50) {
                 scoreValue -= 15;
-            } 
+            }
             if (scoreValue > 50 && scoreValue < 100) {
                 scoreValue -= 40;
             }
-            if (scoreValue < 100) {
+            if (scoreValue > 100) {
                 scoreValue -= 60;
-            } 
+            }
             if (scoreValue === 0 || scoreValue < 0) {
                 scoreValue = 0;
             }
 
-                bombBackground.style.display = 'flex';
-            bombBackground.style.animation = 'bombLight 1s ease-in-out forwards';
+            bombBackground.style.display = 'flex';
+            bombBackground.style.zIndex = '11';
+            bombBackground.style.opacity = '1'
+            bombBackground.style.animation = 'bombLight .3s linear  3 forwards';
 
             setTimeout(() => {
                 bombBackground.style.display = 'none';
@@ -244,12 +307,14 @@ window.onload = function () {
                 }
             }, 500);
             countBombs--
-            scoreDisplay.textContent =`Points: ${scoreValue}`;
+            scoreDisplay.textContent = "Points: " + formatScore(scoreValue);
         });
 
     }
 
-    ////////...............................ARXIV.......................................////////////
+
+
+    ////////...............................ARXIV....................................////////////
 
     function loading(time) {
         spinner.style.display = 'flex';
@@ -263,6 +328,18 @@ window.onload = function () {
         document.querySelectorAll('.ball, .bomb, .ballUltra').forEach(el => el.remove());
         countBall = 0;
         countBombs = 0;
+    }
+
+    function formatScore(score) {
+        if (score >= 1_000_000_000) {
+            return (score / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B';
+        } else if (score >= 1_000_000) {
+            return (score / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+        } else if (score >= 1_000) {
+            return (score / 1_000).toFixed(1).replace(/\.0$/, '') + 'k';
+        } else {
+            return score.toString();
+        }
     }
 
 
@@ -301,6 +378,9 @@ window.onload = function () {
             homepage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
             homepage.style.display = 'flex';
         }, 1200);
+        document.getElementById('gamesound').pause()
+        document.getElementById('gamesound').currentTime = 0;
+        timer = 15
     });
 
     leftShoppage.addEventListener('click', function () {
