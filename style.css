@@ -11,7 +11,9 @@
 ::-webkit-scrollbar {
   display: none;
 }
-
+audio{
+  display: none;
+}
 body {
   width: 100%;
   height: 100vh;
@@ -21,17 +23,7 @@ body {
   align-items: center;
   flex-direction: column;
 
-  & #bombBackground {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999;
-    background-color: #ff0000;
-    display: none;
-  }
-}
-
-main {
+  main {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -39,6 +31,17 @@ main {
   align-items: center;
   flex-direction: column;
   position: relative;
+
+  #bombBackground {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background-color: #ff00004d;
+    opacity: 0;
+    display: none;    
+  }
+
 
   & #homepage {
     width: 100%;
@@ -48,6 +51,7 @@ main {
     align-items: center;
     flex-direction: column;
     position: relative;
+    z-index: 10;
 
     & .logoBlum {
       color: white;
@@ -131,7 +135,7 @@ main {
     flex-direction: column;
     position: relative;
     background-color: rgb(0, 0, 0);
-    z-index: 9999999999999999;
+    z-index: 9;
 
     & header {
       width: 100%;
@@ -175,6 +179,36 @@ main {
       }
     }
 
+    & #timeIsOver{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+      background-color: #0a0a0aa6;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+
+      & h1{
+        font-size: 60px;
+      }
+
+      & button{
+        padding: 10px;
+        border-radius: 30px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+        background-color: white;
+        color: black;
+        font-size: 30px;
+      }
+    }
+
     & #gameArea {
       width: 100%;
       height: 100%;
@@ -192,6 +226,16 @@ main {
         color: #ffffff;
         z-index: 99999999999999999999999999999999999999999999999999999999999999999999;
         font-size: 75px;
+        display: none;
+      }
+
+      & #timer{
+        padding: 10px;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        background-color: white;
+        z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+        position: absolute;
       }
     }
 
@@ -433,6 +477,9 @@ main {
   }
 }
 
+}
+
+
 .ball {
   position: absolute;
   background: #ffffff;
@@ -626,14 +673,13 @@ main {
   }
 
 }
-
 @keyframes bombLight {
   0% {
     opacity: 0;
   }
 
   20% {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 
   40% {
@@ -641,18 +687,15 @@ main {
   }
 
   60% {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 
-  80% {
-    opacity: 0;
-  }
 
   100% {
-    opacity: 0.5;
+    opacity: 0;
+    display:none;
   }
 }
-
 
 
 /* /////////////////////////////////////////////////////////////////////////////// */
