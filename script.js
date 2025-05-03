@@ -1,1 +1,421 @@
-window.onload=function(){var e=document.getElementById("bombBackground");let t=document.getElementById("homepage"),n=document.getElementById("gamepage"),a=document.getElementById("shoppage"),o=document.getElementById("howpage"),l=document.getElementById("settingspage"),s=document.querySelector(".spinner");n.style.display="none",o.style.display="none",l.style.display="none";let i,d,r,m,u=document.getElementById("startButton"),c=document.getElementById("shopButton"),y=document.getElementById("howButton"),g=document.getElementById("settingsButton"),f=document.getElementById("leftGamepage"),p=document.getElementById("leftShoppage"),I=document.getElementById("leftHowpage"),E=document.getElementById("leftSettingspage"),v=document.getElementById("buyExtraTime"),b=0,w=document.getElementById("score"),h=document.getElementById("overScore"),k=document.getElementById("timeIsOver"),x=document.getElementById("playAgain");var B;localStorage.setItem("timer",B);let F=document.getElementById("timer");function T(){clearInterval(i),clearInterval(d),clearInterval(r),clearInterval(m),document.querySelectorAll(".ball, .bomb, .ballUltra").forEach((e=>e.remove())),S=0,O=0,k.style.animation="backgroundFadeOut 1s ease-in-out forwards",k.style.display="none",B=15,b=0,w.textContent=`Points: ${b}`,k.style.display="none",t.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{n.style.animation="backgroundFadeIn 1s ease-in-out forwards",n.style.display="flex";let t=document.getElementById("timerStart");t.style.display="flex",t.style.animation="",t.textContent="4";let a=4;S=0,O=0,i=setInterval((()=>{if(a>1)a--,t.textContent=a;else{clearInterval(i),t.style.animation="backgroundFadeOut 1s ease-in-out forwards",setTimeout((()=>{t.style.display="none"}),1e3),document.getElementById("gamesound").play();const n=setInterval((()=>{F.style.display="flex",F.style.animation="backgroundFadeIn .3s ease-in-out forwards";const e=Math.floor(B/60),t=B%60;F.textContent=String(e).padStart(2,"0")+":"+String(t).padStart(2,"0"),0===B?(clearInterval(n),document.getElementById("gamesound").pause(),document.getElementById("gamesound").currentTime=0,F.style.animation="backgroundFadeOut 1s ease-in-out forwards",F.style.display="none",h.textContent=`Your score: ${b}`,k.style.display="flex",k.style.animation="backgroundFadeIn 1s ease-in-out forwards"):B--}),1e3);d=setInterval((()=>{S<$?function(){let e=document.createElement("div");e.className="ball";let t=50;e.style.width=e.style.height=t+"px";const n=Math.random()*(window.innerWidth-t);e.style.left=`${n}px`;const a=2*Math.random()+3;e.style.animationDuration=`${a}s`,C.appendChild(e),setTimeout((()=>{C.removeChild(e)}),1e3*a),S++,S>=$&&(S=0);e.addEventListener("click",(function(){b+=1,e.style.filter="blur(100px)",setTimeout((()=>{C.removeChild(e)}),500),S--,w.textContent="Points: "+D(b)}))}():clearInterval(d)}),300),r=setInterval((()=>{O<M?function(){let t=document.createElement("div");t.className="bomb";let n=50;t.style.width=t.style.height=n+"px";const a=Math.random()*(window.innerWidth-n);t.style.left=`${a}px`;const o=2*Math.random()+3;t.style.animationDuration=`${o}s`,C.appendChild(t),setTimeout((()=>{C.removeChild(t)}),1e3*o),O++,O>=M&&(O=0);t.addEventListener("click",(function(){b>0&&b<20&&(b-=5),b>20&&b<50&&(b-=15),b>50&&b<100&&(b-=40),b>100&&(b-=60),(0===b||b<0)&&(b=0),e.style.display="flex",e.style.zIndex="11",e.style.opacity="1",e.style.animation="bombLight .3s linear  3 forwards",setTimeout((()=>{e.style.display="none"}),1e3),t.style.pointerEvents="none",t.style.filter="blur(100px)",setTimeout((()=>{C.contains(t)&&C.removeChild(t)}),500),O--,w.textContent="Points: "+D(b)}))}():clearInterval(r)}),3500),m=setInterval((()=>{O<M?function(){let e=document.createElement("div");e.className="ballUltra";let t=60;e.style.width=e.style.height=t+"px";const n=Math.random()*(window.innerWidth-t);e.style.left=`${n}px`;const a=2*Math.random()+3;e.style.animationDuration=`${a}s`,C.appendChild(e),setTimeout((()=>{C.removeChild(e)}),1e3*a),L++,L>=P&&(L=0);e.addEventListener("click",(function(){b+=5,e.style.filter="blur(100px)",setTimeout((()=>{C.removeChild(e)}),500),L--,w.textContent="Points: "+D(b)}))}():clearInterval(m)}),1500)}}),1e3)}),500)}F.style.display="none",u.onclick=T,x.onclick=T,v.onclick=function(){var e;B=parseInt(localStorage.getItem("timer"))||0,e=B+=5,localStorage.setItem("timer",e)};const C=document.getElementById("gameArea");let S=0,O=0,L=0;const $=50,M=1,P=1;function A(e){s.style.display="flex",s.style.animation="loading 2s linear forwards",setTimeout((()=>{s.style.display="none"}),e)}function D(e){return e>=1e9?(e/1e9).toFixed(1).replace(/\.0$/,"")+"B":e>=1e6?(e/1e6).toFixed(1).replace(/\.0$/,"")+"M":e>=1e3?(e/1e3).toFixed(1).replace(/\.0$/,"")+"k":e.toString()}y.addEventListener("click",(function(){t.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{o.style.animation="backgroundFadeIn 1s ease-in-out forwards",o.style.display="flex"}),500)})),g.addEventListener("click",(function(){t.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{l.style.animation="backgroundFadeIn 1s ease-in-out forwards",l.style.display="flex"}),500)})),c.addEventListener("click",(function(){t.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{a.style.animation="backgroundFadeIn 1s ease-in-out forwards",a.style.display="flex"}),500)})),f.addEventListener("click",(function(){n.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{t.style.animation="backgroundFadeIn 1s ease-in-out forwards",t.style.display="flex"}),1200),document.getElementById("gamesound").pause(),document.getElementById("gamesound").currentTime=0,B=15})),p.addEventListener("click",(function(){a.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{t.style.animation="backgroundFadeIn 1s ease-in-out forwards",t.style.display="flex"}),1200)})),I.addEventListener("click",(function(){o.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{t.style.animation="backgroundFadeIn 1s ease-in-out forwards",t.style.display="flex"}),1200)})),E.addEventListener("click",(function(){l.style.animation="backgroundFadeOut 1s ease-in-out forwards",A(500),setTimeout((()=>{t.style.animation="backgroundFadeIn 1s ease-in-out forwards",t.style.display="flex"}),1200)}))};
+window.onload = function () {
+
+    var bombBackground = document.getElementById('bombBackground');
+
+    //......CANVAS......//
+    let homepage = document.getElementById('homepage');
+    let gamepage = document.getElementById('gamepage');
+    let shoppage = document.getElementById('shoppage');
+    let howpage = document.getElementById('howpage');
+    let settingspage = document.getElementById('settingspage');
+    let spinner = document.querySelector('.spinner');
+
+    gamepage.style.display = 'none';
+    howpage.style.display = 'none';
+    settingspage.style.display = 'none';
+
+
+
+    //......BUTTONS......//
+    let startButton = document.getElementById('startButton');
+    let shopButton = document.getElementById('shopButton');
+    let howButton = document.getElementById('howButton');
+    let settingsButton = document.getElementById('settingsButton');
+    ////
+    let leftGamepage = document.getElementById('leftGamepage');
+    let leftShoppage = document.getElementById('leftShoppage');
+    let leftHowpage = document.getElementById('leftHowpage');
+    let leftSettingspage = document.getElementById('leftSettingspage');
+    ////
+    let buyExtraTime = document.getElementById('buyExtraTime');
+
+
+    //......START......//
+    let countdownIntervalId;
+    let ballIntervalId;
+    let bombIntervalId;
+    let ballUltraIntervalId;
+
+    let scoreValue = 0;
+    let scoreDisplay = document.getElementById("score");
+    let overScore = document.getElementById("overScore");
+
+    let timeIsOver = document.getElementById("timeIsOver");
+    let playAgain = document.getElementById("playAgain");
+
+    var timer
+    localStorage.setItem('timer', timer);
+
+    function setTimer(newTime) {
+        localStorage.setItem('timer', newTime);
+    }
+    let timerDisplay = document.getElementById('timer')
+    timerDisplay.style.display = 'none'
+
+    startButton.onclick = startGame;
+    playAgain.onclick = startGame;
+
+    function startGame() {
+        clearInterval(countdownIntervalId);
+        clearInterval(ballIntervalId);
+        clearInterval(bombIntervalId);
+        clearInterval(ballUltraIntervalId);
+        clearGameArea();
+
+        timeIsOver.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        timeIsOver.style.display = 'none';
+
+        timer = 15
+        scoreValue = 0;
+        scoreDisplay.textContent = `Points: ${scoreValue}`;
+
+        timeIsOver.style.display = 'none';
+
+        homepage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500);
+
+        setTimeout(() => {
+            gamepage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            gamepage.style.display = 'flex';
+
+            let timeStart = document.getElementById('timerStart');
+            timeStart.style.display = 'flex';
+            timeStart.style.animation = '';
+            timeStart.textContent = '4';
+
+            let timerStart = 4;
+            countBall = 0;
+            countBombs = 0;
+
+            countdownIntervalId = setInterval(() => {
+                if (timerStart > 1) {
+                    timerStart--;
+                    timeStart.textContent = timerStart;
+                } else {
+                    clearInterval(countdownIntervalId);
+                    timeStart.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+                    setTimeout(() => {
+                        timeStart.style.display = 'none';
+                    }, 1000);
+                    document.getElementById('gamesound').play()
+                    const interval = setInterval(() => {
+                        timerDisplay.style.display = 'flex'
+                        timerDisplay.style.animation = 'backgroundFadeIn .3s ease-in-out forwards';
+                        const minutes = Math.floor(timer / 60);
+                        const seconds = timer % 60;
+
+                        timerDisplay.textContent =
+                            String(minutes).padStart(2, '0') + ':' +
+                            String(seconds).padStart(2, '0');
+
+                        if (timer === 0) {
+                            clearInterval(interval);
+                            document.getElementById('gamesound').pause()
+                            document.getElementById('gamesound').currentTime = 0;
+                            timerDisplay.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+                            timerDisplay.style.display = 'none';
+                            overScore.textContent = `Your score: ${scoreValue}`;
+                            timeIsOver.style.display = 'flex';
+                            timeIsOver.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+                        } else {
+                            timer--;
+                        }
+
+
+                    }, 1000);
+
+                    ballIntervalId = setInterval(() => {
+                        if (countBall < maxBalls) {
+                            createBall();
+                        } else {
+                            clearInterval(ballIntervalId);
+                        }
+                    }, 300);
+
+                    bombIntervalId = setInterval(() => {
+                        if (countBombs < maxBombs) {
+                            createBomb();
+                        } else {
+                            clearInterval(bombIntervalId);
+                        }
+                    }, 3500);
+
+                    ballUltraIntervalId = setInterval(() => {
+                        if (countBombs < maxBombs) {
+                            createBallUltra();
+                        } else {
+                            clearInterval(ballUltraIntervalId);
+                        }
+                    }, 1500);
+                }
+            }, 1000);
+        }, 500);
+    };
+
+
+    buyExtraTime.onclick = function () {
+        timer = parseInt(localStorage.getItem('timer')) || 0;
+        timer += 5;
+        setTimer(timer);
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////
+
+
+    const gameArea = document.getElementById("gameArea");
+    let countBall = 0;
+    let countBombs = 0;
+    let countBallUltra = 0;
+    const maxBalls = 50;
+    const maxBombs = 1;
+    const maxBallsUltra = 1;
+
+
+
+    function createBall() {
+        let ball = document.createElement("div");
+        ball.className = "ball";
+
+        let size = 50
+        ball.style.width = ball.style.height = size + "px";
+
+        const containerWidth = document.documentElement.clientWidth;
+        const left = Math.random() * (containerWidth - size);
+        ball.style.left = `${left}px`;
+
+
+        const duration = Math.random() * 2 + 3;
+        ball.style.animationDuration = `${duration}s`;
+
+        gameArea.appendChild(ball);
+
+        setTimeout(() => {
+            gameArea.removeChild(ball);
+        }, duration * 1000);
+
+        countBall++;
+
+        ball.addEventListener('animationend', () => {
+            ball.remove();
+        });
+
+        if (countBall >= maxBalls) {
+            countBall = 0;
+        }
+
+        ball.addEventListener("click", function () {
+            scoreValue += 1;
+            gameArea.removeChild(ball);
+            countBall--;
+            scoreDisplay.textContent = "Points: " + formatScore(scoreValue);
+        });
+    }
+
+    function createBallUltra() {
+        let ballUltra = document.createElement("div");
+        ballUltra.className = "ballUltra";
+
+        let size = 60
+        ballUltra.style.width = ballUltra.style.height = size + "px";
+
+        const containerWidth = document.documentElement.clientWidth;
+        const left = Math.random() * (containerWidth - size);
+        ballUltra.style.left = `${left}px`;
+
+
+        const duration = Math.random() * 2 + 3;
+        ballUltra.style.animationDuration = `${duration}s`;
+
+        gameArea.appendChild(ballUltra);
+
+        setTimeout(() => {
+            gameArea.removeChild(ballUltra);
+        }, duration * 1000);
+
+        countBallUltra++;
+
+        ballUltra.addEventListener('animationend', () => {
+            ballUltra.remove();
+        });
+
+        if (countBallUltra >= maxBallsUltra) {
+            countBallUltra = 0;
+        }
+
+        ballUltra.addEventListener("click", function () {
+            scoreValue += 5;
+            gameArea.removeChild(ballUltra);
+            countBallUltra--;
+            scoreDisplay.textContent = "Points: " + formatScore(scoreValue);
+        });
+    }
+
+
+    function createBomb() {
+        let bomb = document.createElement("div");
+        // bomb.innerHTML = `<i class="fa-solid fa-bomb"></i>`
+        bomb.className = "bomb";
+
+        let size = 50
+        bomb.style.width = bomb.style.height = size + "px";
+
+        const containerWidth = document.documentElement.clientWidth;
+        const left = Math.random() * (containerWidth - size);
+        bomb.style.left = `${left}px`;
+
+
+        const duration = Math.random() * 2 + 3;
+        bomb.style.animationDuration = `${duration}s`;
+
+        gameArea.appendChild(bomb);
+
+        gameArea.removeChild(bomb);
+
+        countBombs++;
+
+        bomb.addEventListener('animationend', () => {
+            bomb.remove(); 
+        });
+
+        if (countBombs >= maxBombs) {
+            countBombs = 0;
+        }
+
+
+
+        bomb.addEventListener("click", function () {
+            if (scoreValue > 0 && scoreValue < 20) {
+                scoreValue -= 5;
+            }
+            if (scoreValue > 20 && scoreValue < 50) {
+                scoreValue -= 15;
+            }
+            if (scoreValue > 50 && scoreValue < 100) {
+                scoreValue -= 40;
+            }
+            if (scoreValue > 100) {
+                scoreValue -= 60;
+            }
+            if (scoreValue === 0 || scoreValue < 0) {
+                scoreValue = 0;
+            }
+
+            bombBackground.style.display = 'flex';
+            bombBackground.style.zIndex = '11';
+            bombBackground.style.opacity = '1'
+            bombBackground.style.animation = 'bombLight .3s linear  3 forwards';
+
+            setTimeout(() => {
+                bombBackground.style.display = 'none';
+            }, 1000);
+            bomb.style.pointerEvents = "none";
+            setTimeout(() => {
+                if (gameArea.contains(bomb)) {
+                    gameArea.removeChild(bomb);
+                }
+            }, 500);
+            countBombs--
+            scoreDisplay.textContent = "Points: " + formatScore(scoreValue);
+        });
+
+    }
+
+
+
+    ////////...............................ARXIV....................................////////////
+
+    function loading(time) {
+        spinner.style.display = 'flex';
+        spinner.style.animation = 'loading 2s linear forwards';
+        setTimeout(() => {
+            spinner.style.display = 'none';
+        }, time);
+    }
+
+    function clearGameArea() {
+        document.querySelectorAll('.ball, .bomb, .ballUltra').forEach(el => el.remove());
+        countBall = 0;
+        countBombs = 0;
+    }
+
+    function formatScore(score) {
+        if (score >= 1_000_000_000) {
+            return (score / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B';
+        } else if (score >= 1_000_000) {
+            return (score / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+        } else if (score >= 1_000) {
+            return (score / 1_000).toFixed(1).replace(/\.0$/, '') + 'k';
+        } else {
+            return score.toString();
+        }
+    }
+
+
+    howButton.addEventListener('click', function () {
+        homepage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            howpage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            howpage.style.display = 'flex';
+        }, 500);
+    });
+
+    settingsButton.addEventListener('click', function () {
+        homepage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            settingspage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            settingspage.style.display = 'flex';
+        }, 500);
+    });
+
+    shopButton.addEventListener('click', function () {
+        homepage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            shoppage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            shoppage.style.display = 'flex';
+        }, 500);
+    });
+
+
+    leftGamepage.addEventListener('click', function () {
+        gamepage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            homepage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            homepage.style.display = 'flex';
+        }, 1200);
+        document.getElementById('gamesound').pause()
+        document.getElementById('gamesound').currentTime = 0;
+        timer = 15
+    });
+
+    leftShoppage.addEventListener('click', function () {
+        shoppage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            homepage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            homepage.style.display = 'flex';
+        }, 1200);
+    });
+
+    leftHowpage.addEventListener('click', function () {
+        howpage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            homepage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            homepage.style.display = 'flex';
+        }, 1200);
+    });
+
+    leftSettingspage.addEventListener('click', function () {
+        settingspage.style.animation = 'backgroundFadeOut 1s ease-in-out forwards';
+        loading(500)
+        setTimeout(() => {
+            homepage.style.animation = 'backgroundFadeIn 1s ease-in-out forwards';
+            homepage.style.display = 'flex';
+        }, 1200);
+    });
+}
